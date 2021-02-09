@@ -21,10 +21,10 @@ form.addEventListener('submit', (e) => {
   const value = parseInt(amount.value); //Krävs om man vill kunna räkna med inputtat värde. Input number = nämligen string som default. Strings consol loggas SVARTA. Numbers BLÅ
   const random = Math.floor(Math.random() * text.length);
   //OM man inte matar in något eller tal <0 eller >9 skrivs text[random] ut
-  if (value <= 0 || value > 9 || isNaN(value)) {
+  if (value < 0 || value > 9 || isNaN(value)) {
     result.innerHTML = `<p class="result">${text[random]}</p>`;
   } else {
-    let resultText = text.splice(0, value);
+    let resultText = text.slice(0, value);
     resultText = resultText
       .map((item) => {
         return `<p class="result">${item}</p>`;
